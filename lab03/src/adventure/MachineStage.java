@@ -84,7 +84,8 @@ public class MachineStage implements AdventureStage {
         int w = (b - a) >> 31;
         int z = ~(b - a) >> 31;
 
-        int max = b & w | a & z;
+//        int max = b & w | a & z;
+        int max = b & z | a & w;
         return max;
     }
 
@@ -132,7 +133,8 @@ public class MachineStage implements AdventureStage {
         int i = 0;
         int sum = 0;
         while (i < x.length) {
-            sum = sum + mysteryAdd(sum, x[i]);
+//            sum = sum + mysteryAdd(sum, x[i]);
+            sum = mysteryAdd(sum, x[i]);
             i = i + 1;
         }
         return sum;
