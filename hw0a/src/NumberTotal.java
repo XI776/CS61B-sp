@@ -20,4 +20,5 @@ public class NumberTotal {
 
 TODO: Write output here
 
+
 Then, click the green play button to check your work. */
