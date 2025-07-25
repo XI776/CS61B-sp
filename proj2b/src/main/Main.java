@@ -42,8 +42,8 @@ public class Main {
         WordNet wordNet = new WordNet(LARGE_SYNSET_FILE, LARGE_HYPONYM_FILE);
         NGramMap map = new NGramMap(SMALL_WORDS_FILE , TOTAL_COUNTS_FILE);
         hns.startUp();
-        hns.register("history", new DummyHistoryHandler());
-        hns.register("historytext", new DummyHistoryTextHandler());
+        hns.register("history", new HistoryHandler(map));
+        hns.register("historytext", new HistoryTextHandler(map));
         hns.register("hyponyms", new HyponymsHandler(wordNet, map));
 
         System.out.println("Finished server startup! Visit http://localhost:4567/ngordnet.html");
