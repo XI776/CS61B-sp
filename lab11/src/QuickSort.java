@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class QuickSort {
 
     /**
@@ -9,7 +11,7 @@ public class QuickSort {
      * 2. Recursively call quicksort on each subsection of the modified array.
      */
     public static int[] sort(int[] arr) {
-        quickSort(arr, 0, arr.length);
+        quickSort(arr, 0, arr.length - 1);
         return arr;
     }
 
@@ -22,7 +24,12 @@ public class QuickSort {
      */
     private static void quickSort(int[] arr, int start, int end) {
         // TODO: Implement quicksort
-        
+        if(start >= end) {
+            return;
+        }
+        int[] partition = partition(arr, start, end);
+        quickSort(arr, start, partition[0] - 1);
+        quickSort(arr, partition[1] + 1, end);
     }
 
     /**
@@ -40,6 +47,27 @@ public class QuickSort {
      */
     private static int[] partition(int[] arr, int start, int end) {
         // TODO: Implement partition
-        return null;
+        int pivot = arr[start];  // Select the first element as pivot
+        int lt = start;          // Index for less than pivot
+        int gt = end;            // Index for greater than pivot
+        int i = start + 1;       // Traverse the array
+
+        while (i <= gt) {
+            if (arr[i] < pivot) {
+                swap(arr, lt++, i++);  // Move smaller elements to the left
+            } else if (arr[i] > pivot) {
+                swap(arr, i, gt--);    // Move larger elements to the right
+            } else {
+                i++;  // If equal to pivot, just move to the next element
+            }
+        }
+
+        return new int[]{lt, gt};  // Return the boundaries for the pivot
     }
+    private static void swap(int[] arr, int i, int j) {
+        int temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
+    }
+
 }   

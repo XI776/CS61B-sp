@@ -17,8 +17,19 @@ public class HeapSort {
      */
     public static void sort(int[] arr) {
         // TODO: Implement heap sort
+        heapify(arr);
+        for(int i = arr.length - 1; i > 0; i--) {
+            swap(arr,0,i);
+            bubbleDown(arr, 0, i);
+        }
     }
-
+    public static void main(String[] args) {
+        int[] arr = {5, 1,23, 5, 6, 23, 134, 5, 0, 12};
+        sort(arr);
+        for(int i = 0; i < arr.length; i++){
+            System.out.print(arr[i] + " ");
+        }
+    }
     /**
      * @param arr
      *
@@ -29,6 +40,11 @@ public class HeapSort {
      */
     private static void heapify(int[] arr) {
         // TODO: Implement heapify
+        for(int i = arr.length / 2 - 1; i >= 0; i--){
+            bubbleDown(arr, i, arr.length - 1);
+        }
+
+
     }
 
 

@@ -55,9 +55,11 @@ public class NGramMapTest {
     @Test
     public void testOnShortFile() {
         // creates an NGramMap from a large dataset
-        NGramMap ngm = new NGramMap(SHORTER_WORDS_FILE,
-                TOTAL_COUNTS_FILE);
+//        NGramMap ngm = new NGramMap(SHORTER_WORDS_FILE,
+//                TOTAL_COUNTS_FILE);
 
+        NGramMap ngm = new NGramMap(SHORTER_WORDS_FILE,
+                    TOTAL_COUNTS_FILE);
         // returns the count of the number of occurrences of economically per year between 2000 and 2010.
         TimeSeries econCount = ngm.countHistory("economically", 2000, 2010);
         assertThat(econCount.get(2000)).isWithin(1E-10).of(294258.0);

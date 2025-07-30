@@ -19,25 +19,22 @@ public class GameLogic {
      *              if no merge occurs, then return 0.
      */
     public static int moveTileUpAsFarAsPossible(int[][] board, int r, int c, int minR) {
-        // TODO: Fill this in in tasks 2, 3, 4
         int status = board[r][c];
         int merge = 0;
         board[r][c] = 0;
         int i = r - 1;
-        while(i >= minR) {
-            if(board[i][c] == status) {
+        while (i >= minR) {
+            if (board[i][c] == status) {
                 merge = 1 + i;
                 break;
-            }
-            else if(board[i][c] != 0) {
+            } else if (board[i][c] != 0) {
                 break;
             }
             i--;
         }
-        if(merge == 0) {
+        if (merge == 0) {
             board[i + 1][c] = status;
-        }
-        else {
+        } else {
             board[i][c] = status * 2;
         }
 
@@ -52,10 +49,9 @@ public class GameLogic {
      * @param c         the column to tilt up.
      */
     public static void tiltColumn(int[][] board, int c) {
-        // TODO: fill this in in task 5
         int mergedRow = 0;
-        for(int r = 1; r < board.length; r++) {
-            if(board[r][c] == 0) {
+        for (int r = 1; r < board.length; r++) {
+            if (board[r][c] == 0) {
                 continue;
             }
             mergedRow = moveTileUpAsFarAsPossible(board, r, c, mergedRow);
@@ -70,8 +66,7 @@ public class GameLogic {
      * @param board     the current state of the board.
      */
     public static void tiltUp(int[][] board) {
-        // TODO: fill this in in task 6
-        for(int c = 0; c < board.length; c++) {
+        for (int c = 0; c < board.length; c++) {
             tiltColumn(board, c);
         }
 
@@ -85,7 +80,6 @@ public class GameLogic {
      * @param side  the direction to tilt
      */
     public static void tilt(int[][] board, Side side) {
-        // TODO: fill this in in task 7
         if (side == Side.EAST) {
             rotateLeft(board);
             tiltUp(board);
